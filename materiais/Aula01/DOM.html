@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manipulação do DOM</title>
+    <style>
+        /* Estilos CSS para as colunas */
+        .coluna1 {
+            float: left;
+            width: 50%;
+        }
+
+        .coluna2 {
+            float: left;
+            width: 50%;
+        }
+
+        /* Estilos para limpar a flutuação */
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="coluna1">
+        <h2 id="titulo1">Árvore de Hierarquia do DOM</h2>
+        <img src="HierarquiaDOM.jpg" alt="Fluxograma da Hierarquia DOM" width="800" height="600"><br>
+    </div>
+    <div class="coluna2">
+        <h2 id="titulo">Exemplo de Manipulação do DOM</h2>
+        <p id="paragrafo">Clique no botão abaixo para alterar o texto.</p>
+        <button id="botao">Clique aqui</button>
+    </div>
+    <!-- Limpar a flutuação -->
+    <div class="clear"></div>
+    <script>
+        // Obtém uma referência para o botão e o parágrafo
+        var botao = document.getElementById("botao");
+        var paragrafo = document.getElementById("paragrafo");
+        // Define uma função de manipulação de evento para o botão
+        botao.addEventListener("click", function () {
+            // Altera o texto do parágrafo
+            paragrafo.textContent = "O texto foi alterado!";
+        });
+    </script>
+</body>
+
+</html>

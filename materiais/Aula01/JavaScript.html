@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Interação HTML e JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .center-title {
+            text-align: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .results-card {
+            display: none;
+            /* Oculta por padrão e será exibido depois */
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="center-title">Interação HTML e JavaScript</h1>
+    <div class="card">
+        <form id="myForm" style="display: flex; flex-direction: column;">
+            <label for="name" style="margin-bottom: 10px;">Nome:</label>
+            <input type="text" id="name" name="name" style="margin-bottom: 10px; width: 97%;">
+            <label for="email" style="margin-bottom: 10px;">E-mail:</label>
+            <input type="email" id="email" name="email" style="margin-bottom: 20px; width: 97%;">
+            <input type="submit" value="Enviar" style="width: 100%;">
+        </form>
+    </div>
+
+    <div class="card results-card" id="resultsCard">
+        <!-- O conteúdo será inserido aqui dinamicamente -->
+    </div>
+    <script>
+        function calcularIMC(peso, altura) {
+            const imc = peso / (altura * altura);
+            if (imc < 18.5) {
+                return "Abaixo do peso";
+            } else if (imc >= 18.5 && imc < 24.9) {
+                return "Peso normal";
+            } else if (imc >= 25 && imc < 29.9) {
+                return "Sobrepeso";
+            } else {
+                return "Obesidade";
+            }
+        }
+        function processarIMC(name) {
+            let continuar = true;
+            while (continuar) {
+                let peso = parseFloat(prompt("Informe o peso (em kg):"));
+                let altura = parseFloat(prompt("Informe a altura (em metros):"));
+                alert("O resultado será mostrado na Web e no console");
+                if (!isNaN(peso) && !isNaN(altura)) {
+                    let resultadoIMC = calcularIMC(peso, altura);
+                    mostrarResultados(peso, altura, resultadoIMC);
+                    console.log("IMC:", resultadoIMC);
+                    continuar = confirm("Você gostaria de calcular novamente?");
+                } else {
+                    alert("Por favor, insira valores válidos para peso e altura.");
+                }
+            }
+        }
+        function mostrarResultados(peso, altura, resultadoIMC) {
+            const resultsCard = document.getElementById('resultsCard');
+            resultsCard.innerHTML = `
+    Peso: ${peso} kg<br>
+    Altura: ${altura} m<br>
+    O IMC é: ${resultadoIMC}<br><br>
+    `;
+            resultsCard.style.display = 'block'; // Mostrar o card de resultados
+        }
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            console.log("Nome:", name);
+            console.log("E-mail:", email);
+            processarIMC(name);
+        });
+    </script>
+</body>
+
+</html>

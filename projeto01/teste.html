@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="result"></h1>
+    <script>
+        let nome = prompt("Qual seu nome?");
+        let mensagem = document.getElementById('result');
+        mensagem.innerHTML = `Bem-vindo(a) ${nome}!`;
+    </script>
+    
+</body>
+</html>
